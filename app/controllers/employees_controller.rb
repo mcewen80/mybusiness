@@ -4,7 +4,11 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    if params[:search]
+       @employees = Employee.search_name(params[:search]).order("created_at DESC")
+    else
+      @employees = Employee.all.order('created_at DESC')
+    end
   end
 
   # GET /employees/1

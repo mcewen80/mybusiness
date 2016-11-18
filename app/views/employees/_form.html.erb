@@ -1,0 +1,82 @@
+<%= form_for(employee, html: {class: 'form-horizontal'}) do |f| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <!-- if show_only disable input fields -->
+  <% if local_assigns[:show_only] %>
+    <fieldset disabled>
+  <% end %>
+  
+  <div class="field form-group">
+    <%= f.label :first_name, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+  </div>
+  
+   <div class="field form-group">
+    <%= f.label :last_name, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+    <%= f.text_field :last_name, class: 'form-control' %>
+  </div>
+  </div>
+  
+  <div class="field form-group">
+    <%= f.label :initials, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :initials, class: 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="field form-group">
+    <%= f.label :date_of_birth, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :date_of_birth, class: 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="field form-group">
+    <%= f.label :bsn, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :bsn, class: 'form-control' %>
+    </div>
+  </div>
+
+  
+  <!-- if show_only disable input fields -->
+  <% if local_assigns[:show_only] %>
+   </fieldset>
+  <% end %>
+
+  <div class="actions form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+
+      <%= link_to employees_path,class: 'btn btn-default' do %>
+        <i class="glyphicon glyphicon-list"></i>
+      <% end %>
+      
+      <% if local_assigns[:show_only] %>
+        <%= link_to edit_employee_path(employee), class: 'btn btn-default' do %>
+          <i class="glyphicon glyphicon-pencil"></i>
+        <% end %> 
+      <% else %>
+        <%= button_tag(type: "submit", class: "btn btn-default") do %>
+          <i class="glyphicon glyphicon-floppy-saved"></i>
+        <% end %>
+      <% end %>
+      
+       <%= link_to employee, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+        <i class="glyphicon glyphicon-remove-sign"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -5,9 +5,9 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     if params[:search]
-       @employees = Employee.search_name(params[:search]).order("created_at DESC")
+       @employees = Employee.search_name(params[:search]).order("id ASC")
     else
-      @employees = Employee.all.order('created_at DESC')
+      @employees = Employee.all.order("id ASC")
     end
   end
 

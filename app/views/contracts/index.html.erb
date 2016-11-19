@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Employee</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Function</th>
@@ -14,6 +15,7 @@
     <% @contracts.each do |contract| %>
       <tr>
         <td><%= contract.id %></td>
+        <td><%= contract.employee.full_name %></td>
         <td><%= contract.start_date %></td>
         <td><%= contract.end_date %></td>
         <td><%= contract.function %></td>

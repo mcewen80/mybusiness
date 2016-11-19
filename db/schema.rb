@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 20161118212229) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "function"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["employee_id"], name: "index_contracts_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|

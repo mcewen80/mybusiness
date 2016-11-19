@@ -4,6 +4,8 @@ class Employee < ApplicationRecord
     validates :initials,  presence: true
     validates :date_of_birth,  presence: true
     
+    has_many :contracts
+    
     def self.search_name(search)
 	  where("first_name LIKE ? OR last_name LIKE ?", "%#{search}%", "%#{search}%")
 	end

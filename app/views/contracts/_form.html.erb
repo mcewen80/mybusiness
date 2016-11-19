@@ -1,0 +1,68 @@
+<%= form_for(contract) do |f| %>
+   <% if contract.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+      <ul>
+      <% contract.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <!-- if show_only disable input fields -->
+  <% if local_assigns[:show_only] %>
+    <fieldset disabled>
+  <% end %>
+  
+  <div class="field form-group">
+    <%= f.label :start_date, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :start_date, class: 'form-control' %>
+    </div>
+  </div>
+  
+   <div class="field form-group">
+    <%= f.label :end_date, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+    <%= f.text_field :end_date, class: 'form-control' %>
+  </div>
+  </div>
+  
+  <div class="field form-group">
+    <%= f.label :function, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :function, class: 'form-control' %>
+    </div>
+  </div>
+  
+  <!-- if show_only disable input fields -->
+  <% if local_assigns[:show_only] %>
+   </fieldset>
+  <% end %>
+
+  <div class="actions form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+
+      <%= link_to contracts_path,class: 'btn btn-default' do %>
+        <i class="glyphicon glyphicon-list"></i>
+      <% end %>
+      
+      <% if local_assigns[:show_only] %>
+        <%= link_to edit_contract_path(contract), class: 'btn btn-default' do %>
+          <i class="glyphicon glyphicon-pencil"></i>
+        <% end %> 
+      <% else %>
+        <%= button_tag(type: "submit", class: "btn btn-default") do %>
+          <i class="glyphicon glyphicon-floppy-saved"></i>
+        <% end %>
+      <% end %>
+      
+       <%= link_to contract, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' do %>
+        <i class="glyphicon glyphicon-remove-sign"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

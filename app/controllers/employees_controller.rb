@@ -5,9 +5,11 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     if params[:search]
-       @employees = Employee.search_name(params[:search]).order("id ASC")
+       @employees = Employee.paginate(page: params[:page]).search_name(params[:search]).order("id ASC")
+       #@employees = Employee.search_name(params[:search]).order("id ASC")
     else
-      @employees = Employee.all.order("id ASC")
+       @employees = Employee.paginate(page: params[:page])
+       # @employees = Employee.all.order("id ASC")
     end
   end
 

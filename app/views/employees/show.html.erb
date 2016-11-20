@@ -1,3 +1,8 @@
 <h1>Show Employee</h1>
 
 <%= render 'form', employee: @employee, show_only: true %>
+
+<h3>Employee contracts</h3>
+
+<% @contracts = @employee.contracts %>
+<%= render 'contracts/index', contracts: @contracts, employee_id: @employee.id %>

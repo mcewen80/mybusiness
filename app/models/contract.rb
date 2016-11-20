@@ -11,5 +11,6 @@ class Contract < ApplicationRecord
     
     validates :start_date,  presence: true
     validates :function,  presence: true
+    
     validates_with StartdateBeforeEnddate
 end

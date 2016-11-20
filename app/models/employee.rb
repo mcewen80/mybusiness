@@ -62,11 +62,12 @@ class Employee < ApplicationRecord
     validates_with BsnValidator
     
     has_many :contracts
+    has_many :projects
     
     # scope
     def self.search_name(search)
-	  where("first_name LIKE ? OR last_name LIKE ?", "%#{search}%", "%#{search}%")
-	end
+	     where("first_name LIKE ? OR last_name LIKE ?", "%#{search}%", "%#{search}%")
+	  end
     
     # full name definition
     def full_name
@@ -84,5 +85,5 @@ class Employee < ApplicationRecord
        #active = @contract.end_date >= Date.today
     end
     
-    self.per_page = 2
+    self.per_page = 10
 end

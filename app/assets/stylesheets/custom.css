@@ -1,0 +1,4 @@
+/* override bootstrap pagination margin*/
+div.pagination, ul.pagination {
+    margin: 0px;
+}

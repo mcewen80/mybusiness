@@ -2,11 +2,8 @@
 
 <h1>Employees</h1>
 
-<div class="row">
-  <div class="col-sm-4">
-    <%= will_paginate @employees %>
-  </div>
-  <div class="col-sm-offset-4 col-sm-3">
+<div class="row">  
+  <div class="col-sm-3">
     <%= form_tag(employees_path, :method => "get", id: "search-form", class: 'input-group') do %>
       <span class= "input-group-btn">
       <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: "Search Employees" %>
@@ -62,10 +59,11 @@
           <i class="glyphicon glyphicon-plus"></i> New
         <% end %>
       </td>
+      <td colspan="2">
+        <%= will_paginate @employees %>
+        </td>
     </tr>    
   </tfoot>
 </table>
-
-<%= will_paginate @employees %>
 
 <br>
